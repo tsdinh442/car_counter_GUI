@@ -1,3 +1,2 @@
-models/
-
+models/car_detector.pt
 codes/image_drawer.py
