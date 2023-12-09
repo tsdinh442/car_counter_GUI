@@ -6,6 +6,8 @@ from PIL import Image, ImageTk
 from utility import get_centroid, display_number_of_cars
 from predict import predict
 
+STROKE = 3
+
 class ImageDrawer:
    def __init__(self, root, model):
        self.root = root
@@ -119,10 +121,10 @@ class ImageDrawer:
        if self.image is not None:
            x, y = event.x, event.y
            if len(self.points) == 0:
-               cv2.circle(self.drawn_image, (x, y), 5, (0, 255, 0), -1)
+               cv2.circle(self.drawn_image, (x, y), STROKE, (0, 255, 0), -1)
                self.points.append((x, y))
            else:
-               cv2.line(self.drawn_image, self.points[-1], (x, y), (0, 255, 0), 5)
+               cv2.line(self.drawn_image, self.points[-1], (x, y), (0, 255, 0), STROKE)
                self.points.append((x, y))
 
            if len(self.points) > 3:
@@ -139,13 +141,14 @@ class ImageDrawer:
        if self.image is not None:
            self.drawn_image = np.copy(self.image)
            self.polygons[self.current_image_index] = []
+           self.points = []
            self.display_image()
 
    def predict(self):
 
        for polygon in self.polygons[self.current_image_index]:
 
-           cv2.polylines(self.drawn_image, np.array([polygon[:-1]]), True, (0, 255, 255), 5)
+           cv2.polylines(self.drawn_image, np.array([polygon[:-1]]), True, (0, 255, 255), STROKE)
            # detecting cars and start counting
            count, centers, bboxes, scores = predict(self.model, np.array(polygon), self.image, conf=0.7, iou=0.7)
 
