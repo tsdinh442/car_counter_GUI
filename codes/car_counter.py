@@ -3,7 +3,7 @@ import numpy as np
 import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk
-#from ultralytics import YOLO
+from utility import get_centroid, display_number_of_cars
 from predict import predict
 
 class ImageDrawer:
@@ -72,12 +72,17 @@ class ImageDrawer:
 
 
    def check_image_index(self):
+
        if self.current_image_index == 0:
+           if self.current_image_index == len(self.file_paths) - 1:
+               self.next_button.config(state='disabled')
            self.prev_button.config(state='disabled')
            return
+
        elif self.current_image_index == len(self.file_paths) - 1:
            self.next_button.config(state='disabled')
            return
+
        self.prev_button.config(state='normal')
        self.next_button.config(state='normal')
 
@@ -124,8 +129,7 @@ class ImageDrawer:
                if self.closing_polygon(self.points[0], (x, y)):
                    self.drawn_image = np.copy(self.image)
                    self.polygons[self.current_image_index].append(self.points)
-                   #for polygon in self.polygons[self.current_image_index]:
-                       #cv2.polylines(self.drawn_image, np.array([polygon[:-1]]), True, (0, 255, 255), 5)
+
                    self.points = []
                    self.predict()
 
@@ -150,8 +154,7 @@ class ImageDrawer:
                cv2.circle(self.drawn_image, center, radius=4, color=(0, 0, 255), thickness=-1)
 
            # display the number of cars
-           cv2.putText(self.drawn_image, str(count) + 'cars', (polygon[0]), cv2.FONT_HERSHEY_SIMPLEX, 2, color=(0, 0, 255),
-                       thickness=2)
+           display_number_of_cars(self.drawn_image, centroid=get_centroid(polygon), number_of_cars=count)
 
            self.predicted_image[self.current_image_index] = self.drawn_image
 
