@@ -156,7 +156,7 @@ class ImageDrawer:
            # display the number of cars
            display_number_of_cars(self.drawn_image, centroid=get_centroid(polygon), number_of_cars=count)
 
-           self.predicted_image[self.current_image_index] = self.drawn_image
+       self.predicted_image[self.current_image_index] = self.drawn_image
 
        #self.display_image()
 
@@ -164,7 +164,6 @@ class ImageDrawer:
 
    def display_image(self):
        if self.image is not None:
-
            # Convert image from BGR to RGB for Tkinter
            image_rgb = cv2.cvtColor(self.drawn_image, cv2.COLOR_BGR2RGB)
 
