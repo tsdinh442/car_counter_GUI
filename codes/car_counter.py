@@ -49,10 +49,12 @@ class ImageDrawer:
 
        if self.file_paths:
            self.current_image_index = 0
+           self.show_additional_buttons()
+
            self.fit_image_to_frame()
            self.drawn_image = np.copy(self.image)
            self.display_image()
-           self.show_additional_buttons()
+
 
            # Reset polygons vertices
            self.points = []
@@ -62,9 +64,11 @@ class ImageDrawer:
    def fit_image_to_frame(self):
        image = cv2.imread(self.file_paths[self.current_image_index])
        # fit the image to the canvas
+       image_height, image_width, _ = image.shape
        width, height = self.canvas.winfo_width(), self.canvas.winfo_height()
-       self.image = cv2.resize(image, (width, height))
 
+       scale = width / image_width
+       self.image = cv2.resize(image, (int(image_width * scale), int(image_height * scale)))
 
    def show_additional_buttons(self):
        self.check_image_index()
@@ -75,18 +79,18 @@ class ImageDrawer:
 
    def check_image_index(self):
 
+       self.prev_button.config(state='normal')
+       self.next_button.config(state='normal')
+
        if self.current_image_index == 0:
            if self.current_image_index == len(self.file_paths) - 1:
                self.next_button.config(state='disabled')
            self.prev_button.config(state='disabled')
-           return
 
        elif self.current_image_index == len(self.file_paths) - 1:
            self.next_button.config(state='disabled')
-           return
 
-       self.prev_button.config(state='normal')
-       self.next_button.config(state='normal')
+
 
    def show_next_image(self):
        self.current_image_index += 1
