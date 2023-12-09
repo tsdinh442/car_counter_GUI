@@ -8,7 +8,7 @@ from ultralytics import YOLO
 
 
 if __name__ == "__main__":
-    model = YOLO('../models/car_detector.pt')
+    model = YOLO('models/car-detector.pt')
     root = tk.Tk()
     app = ImageDrawer(root, model)
     root.mainloop()
