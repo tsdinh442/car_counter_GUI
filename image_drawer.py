@@ -53,6 +53,10 @@ class ImageDrawer:
            self.display_image()
            self.show_additional_buttons()
 
+           # Reset polygons vertices
+           self.points = []
+           self.polygons = []
+
    def fit_image_to_frame(self):
        image = cv2.imread(self.file_paths[self.current_image_index])
        # fit the image to the canvas
