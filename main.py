@@ -3,7 +3,7 @@ import numpy as np
 import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk
-from image_drawer import ImageDrawer
+from car_counter import ImageDrawer
 from ultralytics import YOLO
 
 

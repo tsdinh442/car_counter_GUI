@@ -13,7 +13,6 @@ class ImageDrawer:
        # Initialize image
        self.image = None
        self.drawn_image = None
-       self.polygons_image = None
        # Create canvas
        self.canvas = tk.Canvas(root, width=800, height=600, bg="white")
        self.canvas.pack()
@@ -160,16 +159,13 @@ class ImageDrawer:
        if self.image is not None:
 
            # Convert image from BGR to RGB for Tkinter
-
            image_rgb = cv2.cvtColor(self.drawn_image, cv2.COLOR_BGR2RGB)
-           #image_rgb = cv2.cvtColor(self.image, cv2.COLOR_BGR2RGB)
 
            # Convert to PhotoImage format
            image_tk = Image.fromarray(image_rgb)
            image_tk = ImageTk.PhotoImage(image_tk)
 
            # Update canvas
-           #self.canvas.config(width=image_tk.width(), height=image_tk.height())
            self.canvas.config()
            self.canvas.create_image(0, 0, anchor=tk.NW, image=image_tk)
            self.canvas.image = image_tk
