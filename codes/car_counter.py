@@ -91,7 +91,6 @@ class ImageDrawer:
            self.next_button.config(state='disabled')
 
 
-
    def show_next_image(self):
        self.current_image_index += 1
        self.check_image_index()
