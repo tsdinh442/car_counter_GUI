@@ -23,10 +23,10 @@ class ImageDrawer:
        self.clear_button = tk.Button(root, text="Clear", command=self.clear_polygons)
        self.clear_button.pack(side=tk.LEFT, padx=5, pady=10)
 
-       self.next_button = tk.Button(root, text="Next", command=self.show_next_image)
+       self.next_button = tk.Button(self.root, text="Next", command=self.show_next_image)
        self.next_button.pack_forget()
 
-       self.prev_button = tk.Button(root, text="Previous", command=self.show_prev_image)
+       self.prev_button = tk.Button(self.root, text="Previous", command=self.show_prev_image)
        self.prev_button.pack_forget()
 
        self.count_cars = tk.Button(root, text="Count cars", command=self.predict)
@@ -40,6 +40,9 @@ class ImageDrawer:
 
        # load model
        self.model = model
+
+
+
    def load_image(self):
        self.file_paths = filedialog.askopenfilenames(title="Select Images", filetypes=[("Image files", "*.png *.jpg *.jpeg")])
 
@@ -58,16 +61,21 @@ class ImageDrawer:
 
 
    def show_additional_buttons(self):
+       self.check_image_index()
        self.next_button.pack(side=tk.RIGHT, padx=5, pady=10)
        self.prev_button.pack(side=tk.RIGHT, padx=5, pady=10)
        self.count_cars.pack(side=tk.LEFT, padx=5, pady=10)
 
 
    def check_image_index(self):
-       if self.current_image_index < 0:
-           self.current_image_index = 0
-       elif self.current_image_index >= len(self.file_paths):
-           self.current_image_index = len(self.file_paths) - 1
+       if self.current_image_index == 0:
+           self.prev_button.config(state='disabled')
+           return
+       elif self.current_image_index == len(self.file_paths) - 1:
+           self.next_button.config(state='disabled')
+           return
+       self.prev_button.config(state='normal')
+       self.next_button.config(state='normal')
 
    def show_next_image(self):
        self.current_image_index += 1
@@ -85,6 +93,7 @@ class ImageDrawer:
    def show_prev_image(self):
        self.current_image_index -= 1
        self.check_image_index()
+
        if self.current_image_index < len(self.file_paths):
            self.fit_image_to_frame()
            self.drawn_image = np.copy(self.image)
