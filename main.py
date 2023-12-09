@@ -4,8 +4,11 @@ import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk
 from image_drawer import ImageDrawer
+from ultralytics import YOLO
+
 
 if __name__ == "__main__":
+    model = YOLO('models/car_detector.pt')
     root = tk.Tk()
-    app = ImageDrawer(root)
+    app = ImageDrawer(root, model)
     root.mainloop()
