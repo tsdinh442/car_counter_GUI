@@ -18,7 +18,9 @@ Follow the instructions below to get the application up and running (currently f
 
 * Setting up environment 
 <br/><br/>
-`conda create --name car-counter python=3.10`
+    `conda create --name car-counter python=3.10`
+
+    `conda activate car-counter`
 <br/><br/>
 * Installing requirements
 <br/><br/>
