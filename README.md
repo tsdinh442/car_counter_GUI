@@ -23,6 +23,7 @@ Follow the instructions below to get the application up and running (currently f
 * Installing requirements
 <br/><br/>
 ` conda install ultralytics`
+
 ` conda install pytorch torchvision torchaudio -c pytorch -c conda-forge`
 <br/><br/>
 To learn more about YOLOv8 --> https://github.com/ultralytics/ultralytics
