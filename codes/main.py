@@ -1,14 +1,11 @@
-import cv2
-import numpy as np
 import tkinter as tk
-from tkinter import filedialog
-from PIL import Image, ImageTk
 from car_counter import ImageDrawer
 from ultralytics import YOLO
 
 
 if __name__ == "__main__":
-    model = YOLO('models/car-detector.pt')
+    car_detector = 'models/car-detector.pt'  # replace your model here
+    model = YOLO(car_detector)
     root = tk.Tk()
     app = ImageDrawer(root, model)
     root.mainloop()
