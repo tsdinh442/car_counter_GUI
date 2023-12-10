@@ -5,7 +5,7 @@ Object detection has been extensively used in car counting, and this project tak
 The project leverages Tkinter, a built-in library in Python, to create buttons, facilitating an intuitive and interactive user interface.
 
 
-<img src='https://img.shields.io/badge/object%20detection%20-8A2BE2'><img src='https://img.shields.io/badge/YOLO-8A2BE2'><img src='https://img.shields.io/badge/OpenCV-8A2BE2'><img src='https://img.shields.io/badge/Tkinter-8A2BE2'>
+<img src='https://img.shields.io/badge/object%20detection%20-8A2BE2'>    <img src='https://img.shields.io/badge/YOLO-8A2BE2'>    <img src='https://img.shields.io/badge/OpenCV-8A2BE2'>    <img src='https://img.shields.io/badge/Tkinter-8A2BE2'>
 
 
 ### Video Demo
