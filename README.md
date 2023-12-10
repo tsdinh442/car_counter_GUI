@@ -1,4 +1,4 @@
-# Car Counter GUI
+# 🚘 Car Counter GUI
 
 Object detection has been extensively used in car counting, and this project takes a user-friendly approach to enhance its application. The goal is to simplify the process, allowing users to easily draw polygons on images. This feature enables them to target specific areas and only count cars that are within the regions of interest.
 
