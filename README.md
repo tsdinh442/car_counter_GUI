@@ -4,14 +4,17 @@ Object detection has been extensively used in car counting, and this project tak
 
 The project leverages Tkinter, a built-in library in Python, to create buttons, facilitating an intuitive and interactive user interface.
 
-<br/><br/>
+
+<img src='https://img.shields.io/badge/object%20detection%20-8A2BE2'>
+<img src='https://img.shields.io/badge/YOLO-8A2BE2'>
+<img src='https://img.shields.io/badge/OpenCV-8A2BE2'>
+<img src='https://img.shields.io/badge/Tkinter-8A2BE2'>
+
 
 ### Video Demo
 
 [![Video](https://img.youtube.com/vi/ZT7juY0WXYU/0.jpg)](https://www.youtube.com/watch?v=ZT7juY0WXYU)
-
 <br/><br/>
-
 ### Getting started
 
 Follow the instructions below to get the application up and running (currently for MacOS only).
@@ -37,9 +40,7 @@ To learn more about YOLOv8 --> https://github.com/ultralytics/ultralytics
 * Run app
 <br/><br/>
 `python codes/main.py`
-
 <br/><br/>
-
 ### How it works
 
 * First, it performs car detection on the entire image
@@ -62,9 +63,7 @@ To learn more about YOLOv8 --> https://github.com/ultralytics/ultralytics
     - using pointPolygonTest by OpenCV to test each centroid
     <br/><br/>
     `check = cv2.pointPolygonTest(targeted_regions, centroid, measureDist=False)`
-
 <br/><br/>
-
 ### License
 
 GNU General Public License 3.0
