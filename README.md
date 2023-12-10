@@ -22,7 +22,7 @@ Follow the instructions below to get the application up and running (currently f
 <br/><br/>
 * Installing requirements
 <br/><br/>
-`    conda install ultralytics
+`    conda install ultralytics \n
      conda install pytorch torchvision torchaudio -c pytorch -c conda-forge
 `
 <br/><br/>
